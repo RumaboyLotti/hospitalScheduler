@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,7 +11,8 @@ public class Patient {
     private Integer Age;
     private String number;
     private Date date;
-    private ArrayList<String> list = new ArrayList<String>();
+    private ArrayList<String> list = new ArrayList<>();
+    private HashMap<String,String> numb = new HashMap<>();
 
 
     public Patient (String name) {
@@ -45,9 +47,6 @@ public class Patient {
         Age = age;
     }
 
-    public String getNumber() {
-        return number;
-    }
 
     public void setNumber(String number) {
         String allCountryRegex = "^(\\+\\d{1,3}( )?)?((\\(\\d{1,3}\\))|\\d{1,3})[- .]?\\d{3,4}[- .]?\\d{4}$";
@@ -58,7 +57,19 @@ public class Patient {
         } else {
             System.out.println("Please Enter a number in the following format 314-111-1111");
         }
+        numb.put(name,number);
         this.number = number;
+    }
+
+    public String getNumber() {
+        String newNumber;
+        if (numb.containsKey(name)) {
+            newNumber = numb.get(number);
+        } else {
+            throw new Error("No number found" + name);
+        }
+        System.out.println(number);
+        return newNumber;
     }
 }
 
