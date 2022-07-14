@@ -36,7 +36,6 @@ public class Patient {
 
     public Integer getAge() {
         if (Age == null) {
-
             System.out.println("Please enter your age first");
         }
         return Age;
