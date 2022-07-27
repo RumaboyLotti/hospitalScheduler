@@ -11,5 +11,6 @@ public class Main {
        //patrick.getNumber();
        Patient jeff = new Patient("Jeffery");
        jeff.getNumber();
+       Doctor doc = new Doctor("doc");
     }
 }
